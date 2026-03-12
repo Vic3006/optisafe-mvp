@@ -20,7 +20,7 @@ sns.set_theme(style="whitegrid")
 # =====================================================================
 # Hardcoded credentials for the MVP
 USER_CREDENTIALS = {
-    "admin": "OptiSafe2024",
+    "admin": "OptiSafe2026",
     "supervisor": "demo123"
 }
 
