@@ -166,7 +166,7 @@ def run_dashboard():
 
         fig4, ax4 = plt.subplots(figsize=(8, 4))
         ax4.plot(shift_hours, optisafe_pieces, marker='o', color=colors["navy"], linewidth=2, label='With OptiSafe (Proactive)')
-        ax4.plot(shift_hours, actual_pieces, marker='X', color=colors["black"], linestyle='--', linewidth=2, label='Status Quo (Fatigue Drop)')
+        ax4.plot(shift_hours, actual_pieces, marker='X', color=colors["navy"], linestyle='--', linewidth=2, label='Status Quo (Fatigue Drop)')
         ax4.fill_between(shift_hours, optisafe_pieces, actual_pieces, color=colors["green"], alpha=0.15, label=f'ROI: +{recovered_pieces} Pieces')
         
         ax4.set_xlabel('Elapsed Shift Hour', fontsize=10)
