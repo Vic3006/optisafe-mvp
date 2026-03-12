@@ -155,7 +155,7 @@ def run_dashboard():
             stress = actual_stress[i]
             
             if alert_triggered:
-                rescue = int(np.random.uniform(2, 5))
+                rescue = int(np.random.uniform(-5, -3))
                 recovered_pieces += rescue
                 optisafe_pieces.append(current_piece + rescue)
             else:
