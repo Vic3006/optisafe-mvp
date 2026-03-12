@@ -197,7 +197,7 @@ def run_dashboard():
         for score in top_profiles['risk_score']:
             if score > 45:
                 bar_colors.append(colors["red"])
-            elif score > 25:
+            elif score > 30:
                 bar_colors.append(colors["yellow"])
             else:
                 bar_colors.append(colors["green"])
