@@ -212,14 +212,25 @@ def run_dashboard():
 
     with colD:
         st.subheader("Scientific Correlation: Sleep vs HRV (All Team)")
-        
-        slope, intercept, r_value, p_value, std_err = stats.linregress(df['sleep_quality'], df['hrv'])
+
+    # Promedio por empleado
+        df_avg = df.groupby('user').agg(
+            avg_sleep=('sleep_quality', 'mean'),
+            avg_hrv=('hrv', 'mean')
+        ).reset_index()
+
+        slope, intercept, r_value, p_value, std_err = stats.linregress(df_avg['avg_sleep'], df_avg['avg_hrv'])
 
         fig3, ax3 = plt.subplots(figsize=(8, 4))
-        sns.regplot(x=df['sleep_quality'], y=df['hrv'], color=colors["navy"],
-                    scatter_kws={'alpha':0.3, 's': 30, 'color': colors["orange"]},
-                    line_kws={'label': f'Scientific Correlation ($R^2$={r_value**2:.2f})'}, ax=ax3)
-        
+        sns.regplot(
+            x=df_avg['avg_sleep'],
+            y=df_avg['avg_hrv'],
+            color=colors["navy"],
+            scatter_kws={'alpha':0.8, 's':80, 'color': colors["orange"]},
+            line_kws={'label': f'Scientific Correlation ($R^2$={r_value**2:.2f})'},
+            ax=ax3
+        )
+
         ax3.set_xlabel('Reported Sleep Quality (%)', fontsize=10)
         ax3.set_ylabel('HRV (ms)', fontsize=10)
         ax3.legend(fontsize=8)
